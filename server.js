@@ -19,7 +19,7 @@ app.use(methodOverride());
 
 // load routes
 
-require('./app/routes')(app);
+require('./routes/routes')(app);
 
 app.listen(8080);
 console.log('Todo app listening on port 8080');
