@@ -1,24 +1,28 @@
 angular.module('todoController', [])
 
-    .controller('mainController', function($scope, $http) {
-      $scope.formData = {};
+.controller('mainController', function($scope, $http, Todos) {
+  $scope.formData = {};
 
-      $http.get('/api/todos')
-        .success(function(data) {
-          $scope.todos. = data;
-        })
-        .error(function(data) {
-          console.log('Error: ' + data);
-        });
-
-      $scope.createTodo = function() {
-        $http.post('/api/todos', $scope.formData)
-          .success(function(data) {
-            $scope.formData = {};
-            $scope.todos = data;
-          })
-          .error(function(data) {
-            console.log('Error: ' + data);
-          })
-      }
+  Todos.get()
+    .success(function(data) {
+      $scope.todos = data;
     })
+
+  $scope.createTodo = function() {
+
+    if (!$.isEmptyObject($scope.formData)) {
+      Todos.create($scope.formData)
+        .success(function(data) {
+          $scope.formData = {};
+          $scope.todos = data;
+        });
+    }
+  };
+
+  $scope.deleteTodo = function(id) {
+    Todos.delete(id)
+      .success(function(data) {
+        $scope.todos = data;
+      })
+  };
+});
