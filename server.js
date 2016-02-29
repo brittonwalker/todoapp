@@ -17,13 +17,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
-
-// mongoose model ================
-
-var Todo = mongoose.model('Todo', {
-  text : String
-});
-
 // routes ==============
 
 app.get('/api/todos', function(req, res) {
