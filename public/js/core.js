@@ -1,1 +1,1 @@
-angular.module('bboysTodo', ['todoController', 'todoService']);
+angular.module('bboysTodo', ['todoController', 'todoService', 'ui.bootstrap']);

@@ -13,6 +13,8 @@ angular.module('todoController', [])
     if (!$.isEmptyObject($scope.formData)) {
       Todos.create($scope.formData)
         .success(function(data) {
+          console.log(data);
+          console.log($scope.formData);
           $scope.formData = {};
           $scope.todos = data;
         });

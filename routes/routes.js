@@ -13,6 +13,9 @@ module.exports = function(app) {
   app.post('/api/todos', function(req, res) {
     Todo.create({
       text: req.body.text,
+      britton: req.body.britton,
+      donnie: req.body.donnie,
+      andrew: req.body.andrew,
       done: false
     }, function(err, todo) {
       if (err)
